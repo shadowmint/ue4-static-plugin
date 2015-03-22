@@ -9,6 +9,9 @@ file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 set(NPP_TESTS TRUE CACHE BOOL "Build and run tests")
 
 # Platform specific
+if(NOT WIN32)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+endif()
 if(APPLE)
   if("${CMAKE_OSX_ARCHITECTURES}" EQUAL "")
     set(CMAKE_OSX_ARCHITECTURES "x86_64")
@@ -24,8 +27,10 @@ set_target_properties(npp PROPERTIES BUILD_WITH_INSTALL_RPATH 1 INSTALL_NAME_DIR
 # C++11 please
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+if(NOT WIN32)
+  if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  endif()
 endif()
 
 # Install rules

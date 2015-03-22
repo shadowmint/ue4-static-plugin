@@ -71,6 +71,9 @@ namespace npp {
 
       /// Close an open library handle
       virtual void dlclose(void *handle) = 0;
+
+      /// Graceful shutdown
+      virtual ~IDynamicLoader() {};
   };
 
   /// A dummy IDynamicLib implementation
@@ -79,5 +82,6 @@ namespace npp {
       Result<void *, const char *> dlopen(const char *path);
       Result<void *, const char *> dlsym(const char *path);
       void dlclose(void *handle);
+      ~DummyDynamicLoader();
   };
 }

@@ -1,6 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "TestPluginPrivatePCH.h"
+#include "dynamic.h"
 
 
 class FTestPlugin : public ITestPlugin
@@ -17,6 +18,8 @@ IMPLEMENT_MODULE( FTestPlugin, TestPlugin )
 void FTestPlugin::StartupModule()
 {
 	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
+	auto value = new npp::DummyDynamicLoader();
+	delete value;
 }
 
 
@@ -25,6 +28,3 @@ void FTestPlugin::ShutdownModule()
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
 }
-
-
-

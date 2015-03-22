@@ -25,8 +25,13 @@ bool TestResult::run() {
   }
   catch(...)
   {
-    std::exception_ptr p = std::current_exception();
-    std::clog <<(p ? p.__cxa_exception_type()->name() : "null") << std::endl;
+    try {
+      std::exception_ptr p = std::current_exception();
+      std::rethrow_exception(p);
+    }
+    catch(const std::exception& e) {
+      std::clog << e.what() << std::endl;
+    }
   }
   return this->success;
 }

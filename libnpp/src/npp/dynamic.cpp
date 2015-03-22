@@ -67,3 +67,7 @@ Result<void *, const char *> DummyDynamicLoader::dlsym(const char *path) {
 /// Close an open library handle
 void DummyDynamicLoader::dlclose(void *handle) {
 }
+
+/// Graceful shutdown
+DummyDynamicLoader::~DummyDynamicLoader() {
+}
