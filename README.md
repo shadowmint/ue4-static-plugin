@@ -23,7 +23,7 @@ Use VS, MSYS obviously wont work when you link.
 
 If you don't want to use the rust library, remove it from TestPlugin.Build.cs
 
-Otherwise, use cargo build in the rust-extern folder.
+Otherwise, use `cargo build` in the rust-extern folder.
 
 Obviously you have to initialize the submodule first.
 
@@ -59,3 +59,22 @@ You might see build output like:
     TestPlugin: Added static library: /Users/doug/dev/unreal/projects/HelloWorld/Plugins/TestPlugin/3rdparty/rust-extern/target/debug/libexterntest-0771709c94325fc4.a
 
 Notice how it all appears twice. No idea why; I presume the UBT runs in multiple passes.
+
+### Missing symbols? Try extern...
+
+Notice that the header file for rust-extern specifically does not have the required
+'extern "C" { }' for the functions it exports.
+
+It should; it should do this:
+
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+    ...
+    #ifdef __cplusplus
+    }
+    #endif
+
+There's a lot more information on this in http://stackoverflow.com/questions/16087451/where-is-the-best-place-to-put-the-ifdef-cplusplus-extern-c-endif
+and around on SO, but this is explicitly used in the files that import extern (TestPlugin.cpp, Foo.cpp)
+to make this requirement obvious.
