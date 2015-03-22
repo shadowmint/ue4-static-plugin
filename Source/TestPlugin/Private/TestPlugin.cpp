@@ -1,7 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "TestPluginPrivatePCH.h"
-#include "dynamic.h"
+#include "npp/dynamic.h"
 
 
 class FTestPlugin : public ITestPlugin
