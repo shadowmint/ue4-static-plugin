@@ -4,6 +4,12 @@ This is an example of linking 3rd party external libraries to the unreal engine.
 
 It is based off the 'blank' plugin in the UE4 source.
 
+## TLDR
+
+This: https://github.com/shadowmint/ue4-static-plugin/blob/master/Source/TestPlugin/TestPlugin.Build.cs
+
+Notice you must have at least 1 .cpp file in your plugin or the UBT will not compile it.
+
 ## Getting started
 
 - Initialize submodules
