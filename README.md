@@ -10,6 +10,8 @@ This: https://github.com/shadowmint/ue4-static-plugin/blob/master/Source/TestPlu
 
 Notice you must have at least 1 .cpp file in your plugin or the UBT will not compile it.
 
+NB. That a project using this plugin should explicitly mark it as a dependency, as per https://github.com/shadowmint/ue4-sample-project/blob/master/Source/HelloWorld/HelloWorld.Build.cs
+
 ## Getting started
 
 - Initialize submodules
@@ -100,6 +102,6 @@ to make this requirement obvious.
 Making updates to the static libraries and not seeing them reflected in the editor?
 
 The hot reload in UE4 is somewhat flakey at the moment. Your best bet is to force a manual
-rebuild; delete the files in Binaries/* and restart the editor.
+rebuild; delete the files in Binaries/ and restart the editor.
 
 It should prompt you to rebuild the plugin and editor targets.
