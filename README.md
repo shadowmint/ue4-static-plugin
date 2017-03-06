@@ -105,3 +105,10 @@ The hot reload in UE4 is somewhat flakey at the moment. Your best bet is to forc
 rebuild; delete the files in Binaries/ and restart the editor.
 
 It should prompt you to rebuild the plugin and editor targets.
+
+## License
+
+This project is under the MIT license. That should be broadly permissive enough
+to do whatever you want with it without resistriction; if for any reason that's
+not acceptable or you have any questions, just open an issue on the issue
+tracker.
